@@ -3,6 +3,6 @@
 <ul>
   <% @documents.each do |document| %>
    <li><h4><%= document.group.group_type %></h4></li>
-   <li><%= link_to document.content, document_path(document)%></li>
+   <li><%= link_to document.title, document_path(document)%></li>
   <% end %>
 </ul>
