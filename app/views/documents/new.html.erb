@@ -1,1 +1,9 @@
-<h1>add a Manual</h1>
+<h1>Create a New Document</h1>
+<div>
+  <%= form_for @document do |f|%>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.text_area :content, :class => 'document'%>
+    <%= f.submit "Create" %>
+  <% end %>
+</div>
