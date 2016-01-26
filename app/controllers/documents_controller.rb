@@ -9,6 +9,6 @@ class DocumentsController < ApplicationController
   end
 
   def edit
-
+    @document = Document.find()
   end
 end
