@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :documents
   resources :admin
-
+  resources :groups
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
