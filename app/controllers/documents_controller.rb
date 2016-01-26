@@ -14,8 +14,12 @@ class DocumentsController < ApplicationController
 
   def create
     @document = Document.new(document_params)
-
-
+    if @document.save
+      redirect_to @document
+    else
+      # flash error will be here
+      redirect_to new_document_path(@document)
+    end
   end
 
   def edit
