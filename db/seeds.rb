@@ -12,3 +12,7 @@ users.each do |user|
   UsersGroup.create!(user_id: user.id, group_id: group.id)
 end
 
+# create documents
+group = Group.all
+
+group
