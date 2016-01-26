@@ -1,0 +1,20 @@
+notifications:
+  slack: islandfoxes2016:rvZVP0uhyIWkffUwuBAusagy
+
+language: ruby
+rvm:
+  - 2.1.7
+
+services:
+  - postgresql
+
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - bundle exec rake db:create RAILS_ENV=test
+  - bundle exec rake db:schema:load RAILS_ENV=test
+
+bundler_args: --binstubs=./bundler_stubs
+
+script:
+  - bundle exec rake spec
+
