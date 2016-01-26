@@ -12,6 +12,19 @@ class UsersController < ApplicationController
       redirect_to signup_path
     end
   end
+
+  def edit
+    @user = User.find(params[:id])
+    render :'users/edit'
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.assign_attributes(params[:username])
+    if @user.save
+      redirect_to group_path
+    end
+  end
   #this is required by rails 4
   private
 

@@ -1,0 +1,4 @@
+<%=form_for(@user, method: "put" )do |f| %>
+	username: <%= f.text_field :username, value: @user.username%>
+	<%=f.submit "Edit a user" %>
+<% end %> 
