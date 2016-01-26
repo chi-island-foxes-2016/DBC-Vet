@@ -1,7 +1,7 @@
 <h1>Edit this Document</h1>
 
 <div>
-  <%= form_for @document do |f|%>
+  <%= form_for @document, method: :put do |f|%>
     <%= f.label :title %>
     <%= f.text_field :title %>
     <%= f.text_area :content, :class => 'document'%>
