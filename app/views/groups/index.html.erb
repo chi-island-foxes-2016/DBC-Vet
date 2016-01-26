@@ -1,6 +1,6 @@
 
 <div class="container">
 	<%@groups.each do |group| %>
-	<p><%=group.group_type%></p>
+	<a href="groups/<%=group.id%>"><p><%=group.group_type%></p>
 	<% end %> 
 </div>
