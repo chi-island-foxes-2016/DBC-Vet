@@ -1,5 +1,5 @@
 <h1>Educate yourself!</h1>
-<%= @document.content.html_safe %>
-<br>
-<br>
-<%= link_to 'Back', 'javascript:history.go(-1);' %> | <%= link_to 'Edit', edit_document_path %>
+<div>
+  <%= @document.content.html_safe %><br>
+  <%= link_to 'Edit', edit_document_path %>
+</div>
