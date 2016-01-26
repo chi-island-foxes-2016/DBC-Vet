@@ -1,4 +1,0 @@
-class ManualsController < ApplicationController
-
-
-end
