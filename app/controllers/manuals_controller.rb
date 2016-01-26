@@ -1,0 +1,4 @@
+class ManualsController < ApplicationController
+
+
+end
