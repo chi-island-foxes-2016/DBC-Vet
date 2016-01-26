@@ -1,10 +1,8 @@
 <h1>Welcome, Please Train Yourself!</h1>
 
-
-<a href="#">1</a>
-<a href="#">2</a>
-<a href="#">3</a>
-<a href="#">4</a>
-<a href="#">5</a>
-<a href="#">6</a>
-<a href="#">7</a>
+<ul>
+  <% @documents.each do |document| %>
+      <%= document.group  %>
+   <li><%= document.content %></li>
+  <% end %>
+</ul>
