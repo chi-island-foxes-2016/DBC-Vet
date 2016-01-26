@@ -1,5 +1,10 @@
 users = []
+groups = []
 GROUP_TYPE = ["Veterinarian", "Technician", "Front Desk", "Admin"]
+
+GROUP_TYPE.each do |type|
+  groups << Group.create!(group_type: type)
+end
 
 # make 15 employees
 15.times do
@@ -8,12 +13,12 @@ end
 
 # user's group type
 users.each do |user|
-  group = Group.create!(group_type: GROUP_TYPE.sample)
-  UsersGroup.create!(user_id: user.id, group_id: group.id)
+  user.groups << groups.sample
+  # UsersGroup.create!(user_id: user.id, group_id: group.id)
 end
 
 # create documents
-groups = Group.all
+# groups = Group.all
 
 groups.each do |group|
   doc = Document.create!(title: Faker::Lorem.word, content: Faker::Lorem.paragraph, group_id: group.id)
