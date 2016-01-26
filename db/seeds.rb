@@ -13,6 +13,9 @@ users.each do |user|
 end
 
 # create documents
-group = Group.all
+groups = Group.all
 
-group
+groups.each do |group|
+  doc = Document.create!(title: Faker::Lorem.word, content: Faker::Lorem.paragraph, group_id: group.id)
+  DocumentsGroup.create(document_id: doc.id, group_id: group.id)
+end
