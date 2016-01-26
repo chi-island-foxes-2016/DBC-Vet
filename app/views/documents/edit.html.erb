@@ -1,9 +1,12 @@
-<h1>Edit a Manual Here</h1>
+<h1>Edit this Document</h1>
 
+<div>
+  <%= form_for @document do |f|%>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.text_area :content, :class => 'document'%>
+    <%= f.submit "Update" %>
+  <% end %>
+</div>
 
-<textarea rows="20" cols="50">
-  <%=@document.content %>
-</textarea>
-<br>
-<br>
 <%= link_to 'Back', 'javascript:history.go(-1);' %>
