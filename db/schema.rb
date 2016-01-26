@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20160126144319) do
   enable_extension "plpgsql"
 
   create_table "documents", force: :cascade do |t|
+    t.string   "title"
     t.text     "content"
     t.integer  "group_id"
     t.datetime "created_at", null: false
