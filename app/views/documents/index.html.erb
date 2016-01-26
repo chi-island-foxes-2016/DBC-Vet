@@ -2,7 +2,7 @@
 
 <ul>
   <% @documents.each do |document| %>
-      <%= document.group  %>
+   <li><h4><%= document.group.group_type %></h4></li>
    <li><%= document.content %></li>
   <% end %>
 </ul>
