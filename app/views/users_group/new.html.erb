@@ -1,10 +1,14 @@
- <h1>Add a user</h1>
+ <div class="col-md-4 col-md-offset-4">
+
+ <h1>Add User to a Group</h1>
  <div>
 	 	<%=bootstrap_form_for @users_group,url:{action: "create"} do |f| %>
 	 	<%=f.collection_select :user_id, User.all,:id,:username,prompt: true %>
 	 	<%=f.submit "Add" %>
  		<%if flash[:notice] %>
  			<%=flash[:notice] %>
-	 	<% end %> 
- 	<% end %> 
+	 	<% end %>
+ 	<% end %>
  </div>
+<br>
+ <a href="javascript: history.go(-1)">Back</a>
