@@ -1,7 +1,8 @@
 class DocumentsController < ApplicationController
 
   def index
-    @documents = Document.all
+    # @documents = Document.all
+    @groups = Group.all
   end
 
   def show
@@ -15,7 +16,7 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(document_params)
     if @document.save
-      redirect_to @document
+      redirect_to documents_url
     else
       # flash error will be here
       redirect_to new_document_path(@document)
@@ -39,6 +40,6 @@ class DocumentsController < ApplicationController
   private
 
   def document_params
-    params.require(:document).permit(:title, :content)
+    params.require(:document).permit(:title, :content, :group_id)
   end
 end

@@ -1,8 +1,10 @@
 <h1>Welcome, Please Train Yourself!</h1>
 
 <ul>
-  <% @documents.each do |document| %>
-   <li><h4><%= document.group.group_type %></h4></li>
-   <li><%= link_to document.title, document_path(document)%></li>
+  <% @groups.each do |group| %>
+    <li><h4><%= group.group_type %></h4></li>
+    <% group.documents.each do |document| %>
+      <li><%= link_to document.title, document_path(document)%></li>
+    <% end %>
   <% end %>
 </ul>
