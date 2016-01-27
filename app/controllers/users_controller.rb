@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
-  include GroupsHelper
+  include AdminHelper
 
   def new
+    if admin?
+      render 'users#new'
+    else
+      redirect_to login_path
+    end
   end
 
   def create
