@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
+  include GroupsHelper
 
   def new
   end
 
   def create
     @user  = User.new(user_params)
-    @group = @user.groups.new(group_params)
+    @group = @user.groups.new(group_type: group_type(group_params)) # calls groups helper method
     if @user.save && @group.save
       session[:user_id] = @user.id
       redirect_to documents_path
