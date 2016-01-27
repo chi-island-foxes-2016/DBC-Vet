@@ -9,9 +9,9 @@ end
 # make 15 employees
 15.times do |x|
   if x > 13
-    users << User.create!(username: Faker::Internet.user_name, password_digest: Faker::Internet.password, admin: true)
+    users << User.create!(username: Faker::Internet.user_name, password: Faker::Internet.password, admin: true)
   else
-    users << User.create!(username: Faker::Internet.user_name, password_digest: Faker::Internet.password, admin: false)
+    users << User.create!(username: Faker::Internet.user_name, password: Faker::Internet.password, admin: false)
   end
 end
 

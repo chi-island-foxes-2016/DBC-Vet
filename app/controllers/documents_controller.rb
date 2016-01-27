@@ -1,16 +1,48 @@
 class DocumentsController < ApplicationController
+  include AdminHelper
 
   def index
     # @documents = Document.all
-    @groups = Group.all
+    if admin?
+      @groups = Group.all
+    elsif session?
+      @groups = user.groups.all
+    else
+      redirect_to login_path
+    end
   end
 
   def show
+    if (admin? || (session? && check_user_docs(params[:id])))
+      @document = Document.find(params[:id])
+      if session[:user_id]
+        user = User.find_by(id: session[:user_id])
+        if user.completed_documents.include?(@document)
+          @completed = true
+        end
+      end
+    else
+      redirect_to login_path
+    end
+  end
+
+  def check
     @document = Document.find(params[:id])
+    @user = User.find_by(id: session[:user_id])
+    if @user.completed_documents.include?(@document)
+      @user.completed_documents.delete(@document)
+    else
+      @user.completed_documents << @document
+    end
+    redirect_to @document
   end
 
   def new
-    @document = Document.new
+    if admin?
+      @document = Document.new
+    else
+      redirect_to login_path
+    end
   end
 
   def create
@@ -24,7 +56,11 @@ class DocumentsController < ApplicationController
   end
 
   def edit
-    @document = Document.find(params[:id])
+    if admin?
+     @document = Document.find(params[:id])
+    else
+      redirect_to login_path
+    end
   end
 
   def update

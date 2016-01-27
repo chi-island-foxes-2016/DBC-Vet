@@ -1,10 +1,16 @@
-<h1>Welcome, Please Train Yourself!</h1>
+
+<h1>Select Your Training</h1>
+
 
 <ul>
   <% @groups.each do |group| %>
+  <div class="item-div text-center">
     <li><h4><%= group.group_type %></h4></li>
     <% group.documents.each do |document| %>
       <li><%= link_to document.title, document_path(document)%></li>
     <% end %>
+  </div>
   <% end %>
 </ul>
+
+<img style="float:center; position:fixed; bottom:0px;" src="https://pixabay.com/static/uploads/photo/2015/07/09/19/32/dog-838281_960_720.jpg">

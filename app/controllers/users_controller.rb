@@ -6,8 +6,8 @@ class UsersController < ApplicationController
 
   def create
     @user  = User.new(user_params)
-    @group = @user.groups.new(group_type: group_type(group_params)) # calls groups helper method
-    if @user.save && @group.save
+    @user.groups << Group.find(params[:group_id])
+    if @user.save
       session[:user_id] = @user.id
       redirect_to documents_path
     else
@@ -33,10 +33,10 @@ class UsersController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:group_type)
+    params.require(:group).permit(:group_id)
   end
 
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :admin, :group_type)
+    params.require(:user).permit(:username, :password, :password_confirmation, :admin)
   end
 end

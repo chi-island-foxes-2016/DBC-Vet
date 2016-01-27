@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   resources :documents
-  resources :admin
+  resources :admin, only: [:index]
   resources :groups
 
   get '/login' => 'sessions#new'
@@ -13,13 +13,14 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
   get '/users/:id/edit' => 'users#edit', as: 'edit_user'
   put '/users/:id' => 'users#update', as: 'user'
-  # get '/groups/:id/users_group/add'
 
   resources :groups do
     resources :users_group, only: [:new, :create]
   end
 
-  # # You can have the root of your site routed with "root"
+  post '/documents/check/:id' => 'documents#check'
+
+  # You can have the root of your site routed with "root"
    root 'sessions#new'
 
   # Example of regular route:
