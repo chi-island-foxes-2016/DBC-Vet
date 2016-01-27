@@ -1,8 +1,16 @@
 class DocumentsController < ApplicationController
+  include AdminHelper
 
   def index
     # @documents = Document.all
-    @groups = Group.all
+    if admin?
+      @groups = Group.all
+    elsif session?
+      user = User.find(session[:user_id])
+      @groups = user.groups.all
+    else
+      redirect_to login_path
+    end
   end
 
   def show
