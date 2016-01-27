@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
-  include GroupsHelper
+  include AdminHelper
 
   def new
+    if !admin?
+      redirect_to login_path
+    end
   end
 
   def create
@@ -16,8 +19,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
-    render :'users/edit'
+    if admin?
+      @user = User.find(params[:id])
+      render :'users/edit'
+    else
+      redirect_to login_path
+    end
   end
 
   def update

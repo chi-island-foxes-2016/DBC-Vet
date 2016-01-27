@@ -31,8 +31,8 @@ module AdminHelper
 
   # checks if document is in user's group
   def check_user_docs(document)
-    doc = UsersDocument.find_by(user_id: user.id, document_id: document)
-    doc == nil ? false : true
+    doc = Document.find(document)
+    user.groups[0].group_type == doc.group.group_type
   end
 
 end
