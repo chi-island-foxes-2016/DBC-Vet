@@ -2,7 +2,8 @@
 
 <%= bootstrap_form_for :user, url: '/users' do |f| %>
   <%= f.text_field :username %>
-  <%= f.collection_select :group_id, Group.all, :id, :group_type, prompt: true %>
   <%= f.password_field :password %>
+  <%= f.collection_select :group_id, Group.all, :id, :group_type, prompt: true %>
+  <%= f.check_box :admin, {}, true, false %>
   <%= f.submit "Submit" %>
 <% end %>
