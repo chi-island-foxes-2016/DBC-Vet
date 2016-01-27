@@ -1,0 +1,10 @@
+ <h1>Add a user</h1>
+ <div>
+	 	<%=bootstrap_form_for @users_group,url:{action: "create"} do |f| %>
+	 	<%=f.collection_select :user_id, User.all,:id,:username,prompt: true %>
+	 	<%=f.submit "Add" %>
+ 		<%if flash[:notice] %>
+ 			<%=flash[:notice] %>
+	 	<% end %> 
+ 	<% end %> 
+ </div>
