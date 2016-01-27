@@ -8,12 +8,18 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#delete'
-
+  put '/groups/:id' => 'groups#update', as: 'group_update'
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
   get '/users/:id/edit' => 'users#edit', as: 'edit_user'
   put '/users/:id' => 'users#update', as: 'user'
-  # You can have the root of your site routed with "root"
+  # get '/groups/:id/users_group/add'
+
+  resources :groups do
+    resources :users_group, only: [:new, :create]
+  end
+
+  # # You can have the root of your site routed with "root"
    root 'sessions#new'
 
   # Example of regular route:
