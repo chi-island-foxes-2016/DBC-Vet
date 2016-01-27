@@ -2,4 +2,9 @@
 <div>
   <%= @document.content.html_safe %><br>
   <%= link_to 'Edit', edit_document_path %>
+  <% if @completed %>
+    <%= button_to "Checked", {action: "check", id: @document.id} %>
+  <% else %>
+    <%= button_to "Empty", {action: "check", id: @document.id} %>
+  <% end %>
 </div>

@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
   get '/users/:id/edit' => 'users#edit', as: 'edit_user'
   put '/users/:id' => 'users#update', as: 'user'
+
+  post '/documents/check/:id' => 'documents#check'
+
   # You can have the root of your site routed with "root"
    root 'sessions#new'
 

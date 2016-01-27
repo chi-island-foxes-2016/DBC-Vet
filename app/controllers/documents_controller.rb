@@ -13,13 +13,28 @@ class DocumentsController < ApplicationController
   end
 
   def show
-    if admin?
+    if (admin? || (session? && check_user_docs(params[:id])))
       @document = Document.find(params[:id])
-    elsif session? && check_user_docs(params[:id])
-      @document = Document.find(params[:id])
+      if session[:user_id]
+        user = User.find_by(id: session[:user_id])
+        if user.completed_documents.include?(@document)
+          @completed = true
+        end
+      end
     else
       redirect_to login_path
     end
+  end
+
+  def check
+    @document = Document.find(params[:id])
+    @user = User.find_by(id: session[:user_id])
+    if @user.completed_documents.include?(@document)
+      @user.completed_documents.delete(@document)
+    else
+      @user.completed_documents << @document
+    end
+    redirect_to @document
   end
 
   def new
