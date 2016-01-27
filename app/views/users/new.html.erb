@@ -2,9 +2,10 @@
 
 <%= bootstrap_form_for :user, url: '/users' do |f| %>
 
-   <%= f.text_field :username %>
-   <%= f.password_field :password %>
-   <%= f.password_field :password_confirmation %>
+  <%= f.text_field :username %>
+  <%= f.collection_select :group_id, Group.all, :id, :group_type, prompt: true %>
+  <%= f.password_field :password %>
+  <%= f.password_field :password_confirmation %>
   <%= f.submit "Submit" %>
 
 <% end %>
