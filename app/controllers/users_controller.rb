@@ -5,7 +5,8 @@ class UsersController < ApplicationController
 
   def create
     @user  = User.new(user_params)
-    if @user.save
+    @group = @user.groups.new(group_params)
+    if @user.save && @group.save
       session[:user_id] = @user.id
       redirect_to documents_path
     else
@@ -25,12 +26,16 @@ class UsersController < ApplicationController
       redirect_to group_path(@user.groups[0].id)
     else
       redirect_to edit_path
-    end 
+    end
   end
   #this is required by rails 4
   private
 
+  def group_params
+    params.require(:group).permit(:group_type)
+  end
+
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation)
+    params.require(:user).permit(:username, :password, :password_confirmation, :admin, :group_type)
   end
 end
