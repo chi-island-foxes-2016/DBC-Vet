@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
+  get '/users/:id/edit' => 'users#edit', as: 'edit_user'
+  put '/users/:id' => 'users#update', as: 'user'
   # You can have the root of your site routed with "root"
    root 'sessions#new'
 
