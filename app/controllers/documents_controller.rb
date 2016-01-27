@@ -13,7 +13,9 @@ class DocumentsController < ApplicationController
   end
 
   def show
-    if admin? || session?
+    if admin?
+      @document = Document.find(params[:id])
+    elsif session? && check_user_docs(params[:id])
       @document = Document.find(params[:id])
     else
       redirect_to login_path
@@ -41,8 +43,9 @@ class DocumentsController < ApplicationController
   def edit
     if admin?
      @document = Document.find(params[:id])
-   else
-    redirect_to login_path
+    else
+      redirect_to login_path
+    end
   end
 
   def update

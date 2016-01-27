@@ -29,4 +29,10 @@ module AdminHelper
     end
   end
 
+  # checks if document is in user's group
+  def check_user_docs(document)
+    doc = UsersDocument.find_by(user_id: user.id, document_id: document)
+    doc == nil ? false : true
+  end
+
 end
