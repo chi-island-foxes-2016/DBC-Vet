@@ -1,5 +1,11 @@
 <div class="container">
- <%@users.each do |user| %>
-	<%=link_to "Edit a user", edit_user_path(user) %>  <p>Name:    <%=user.username %></p>
-	  <% end %>
+  <%@users.each do |user| %>
+  <%=link_to "Edit a user", edit_user_path(user) %>
+  <p>Name:    <%=user.username %></p>
+  <% end %>
 </div>
+<button type="button" class="btn btn-success"><%=link_to "Add a user", new_group_users_group_path(@group) %></button>
+
+<br>
+<br>
+<a href="javascript: history.go(-1)">Back</a>

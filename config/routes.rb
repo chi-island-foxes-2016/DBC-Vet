@@ -8,11 +8,15 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#delete'
-
+  put '/groups/:id' => 'groups#update', as: 'group_update'
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
   get '/users/:id/edit' => 'users#edit', as: 'edit_user'
   put '/users/:id' => 'users#update', as: 'user'
+
+  resources :groups do
+    resources :users_group, only: [:new, :create]
+  end
 
   post '/documents/check/:id' => 'documents#check'
 
