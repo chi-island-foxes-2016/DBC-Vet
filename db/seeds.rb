@@ -1,14 +1,18 @@
 users = []
 groups = []
-GROUP_TYPE = ["Veterinarian", "Technician", "Front Desk", "Admin"]
+GROUP_TYPE = ["Veterinarian", "Technician", "Front Desk"]
 
 GROUP_TYPE.each do |type|
   groups << Group.create!(group_type: type)
 end
 
 # make 15 employees
-15.times do
-  users << User.create!(username: Faker::Internet.user_name, password_digest: Faker::Internet.password)
+15.times do |x|
+  if x > 13
+    users << User.create!(username: Faker::Internet.user_name, password_digest: Faker::Internet.password, admin: true)
+  else
+    users << User.create!(username: Faker::Internet.user_name, password_digest: Faker::Internet.password, admin: false)
+  end
 end
 
 # user's group type
