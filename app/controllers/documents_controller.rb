@@ -59,7 +59,7 @@ class DocumentsController < ApplicationController
     if admin?
      @document = Document.find(params[:id])
     else
-      redirect_to login_path
+      redirect_to documents_path
     end
   end
 
