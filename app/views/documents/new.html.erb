@@ -3,6 +3,7 @@
   <%= form_for @document do |f|%>
     <%= f.label :title %>
     <%= f.text_field :title %>
+    <%= f.collection_select :group_id, Group.all, :id, :group_type, prompt: true %>
     <%= f.text_area :content, :class => 'document'%>
     <%= f.submit "Create" %>
   <% end %>
