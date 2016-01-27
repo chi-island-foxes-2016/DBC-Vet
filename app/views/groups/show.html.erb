@@ -1,5 +1,5 @@
 <div class="container">
  <%@users.each do |user| %>
-	<button><%=link_to "Edit a user", edit_user_path(user) %></button><p>Name:    <%=user.username %></p>
-	  <% end %> 
+	<%=link_to "Edit a user", edit_user_path(user) %>  <p>Name:    <%=user.username %></p>
+	  <% end %>
 </div>
