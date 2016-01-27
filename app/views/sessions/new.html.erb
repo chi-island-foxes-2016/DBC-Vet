@@ -1,9 +1,15 @@
-<h1>Login</h1>
+<body class="main-back">
 
-<%= form_tag '/login' do %>
 
-  Username: <%= text_field_tag :username %>
-  Password: <%= password_field_tag :password %>
-  <%= submit_tag "Submit" %>
+  <%= bootstrap_form_tag url: '/login' do |f|%>
 
-<% end %>
+     <%= f.text_field :username %>
+    <%= f.password_field :password %>
+    <%= f.submit "Submit" %>
+
+  <% end %>
+</body>
+
+
+
+
