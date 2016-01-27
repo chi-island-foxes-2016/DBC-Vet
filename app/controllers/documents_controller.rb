@@ -1,7 +1,8 @@
 class DocumentsController < ApplicationController
 
   def index
-    @documents = Document.all
+    # @documents = Document.all
+    @groups = Group.all
   end
 
   def show
