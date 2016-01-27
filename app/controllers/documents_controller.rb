@@ -6,7 +6,6 @@ class DocumentsController < ApplicationController
     if admin?
       @groups = Group.all
     elsif session?
-      user = User.find(session[:user_id])
       @groups = user.groups.all
     else
       redirect_to login_path
@@ -14,11 +13,19 @@ class DocumentsController < ApplicationController
   end
 
   def show
-    @document = Document.find(params[:id])
+    if admin? || session?
+      @document = Document.find(params[:id])
+    else
+      redirect_to login_path
+    end
   end
 
   def new
-    @document = Document.new
+    if admin?
+      @document = Document.new
+    else
+      redirect_to login_path
+    end
   end
 
   def create
@@ -32,7 +39,10 @@ class DocumentsController < ApplicationController
   end
 
   def edit
-    @document = Document.find(params[:id])
+    if admin?
+     @document = Document.find(params[:id])
+   else
+    redirect_to login_path
   end
 
   def update

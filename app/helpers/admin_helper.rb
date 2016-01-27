@@ -17,8 +17,16 @@ module AdminHelper
     end
   end
 
+  # t/f is logged in
   def session?
    return true if session[:user_id]
+  end
+
+  # get user
+  def user
+    if session?
+      User.find(session[:user_id])
+    end
   end
 
 end
