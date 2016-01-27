@@ -1,6 +1,9 @@
 <h1>Educate yourself!</h1>
+<br>
 <div>
-  <%= @document.content.html_safe %><br>
+  <%= @document.content.html_safe %>
+  <br>
+  <br>
   <%= link_to 'Edit', edit_document_path %>
   <% if @completed %>
     <%= button_to "Checked", {action: "check", id: @document.id} %>

@@ -14,7 +14,8 @@ class SessionsController < ApplicationController
   end
 
   def delete
-    session[:user_id] = nil
+    session[:user_id]
+    session.clear
     redirect_to login_path
   end
 
