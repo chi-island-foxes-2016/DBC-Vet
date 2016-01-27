@@ -5,7 +5,9 @@
   <%= @document.content.html_safe %>
   <br>
   <br>
+  <% if admin? %>
   <%= link_to 'Edit', edit_document_path %>
+  <% end %>
   <br>
   <br>
   <% if @completed %>

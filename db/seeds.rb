@@ -28,3 +28,5 @@ groups.each do |group|
   doc = Document.create!(title: Faker::Lorem.word, content: Faker::Lorem.paragraph, group_id: group.id)
   DocumentsGroup.create(document_id: doc.id, group_id: group.id)
 end
+
+User.create(username: "admin", password: "password", admin: true)
