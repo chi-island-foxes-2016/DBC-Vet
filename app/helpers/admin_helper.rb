@@ -7,4 +7,9 @@ module AdminHelper
   def authorize
     redirect_to '/login' unless current_user
   end
+
+  # check if user is admin
+  def admin?
+    User.find(session[:user_id]).admin
+  end
 end
